@@ -4,6 +4,7 @@ import lk.ijse.apigateway.dto.AuthResponse;
 import lk.ijse.apigateway.dto.LoginRequest;
 import lk.ijse.apigateway.dto.RefreshRequest;
 import lk.ijse.apigateway.dto.RegisterRequest;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -21,6 +22,7 @@ public class IotAuthService {
 
         return webClient.post()
                 .uri("/auth/login")
+                .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .retrieve()
                 .bodyToMono(AuthResponse.class);
@@ -30,6 +32,8 @@ public class IotAuthService {
 
         return webClient.post()
                 .uri("/auth/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .retrieve()
                 .bodyToMono(AuthResponse.class);
@@ -42,6 +46,7 @@ public class IotAuthService {
 
         return webClient.post()
                 .uri("/auth/refresh")
+                .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(req)
                 .retrieve()
                 .bodyToMono(AuthResponse.class);
