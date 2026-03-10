@@ -2,6 +2,7 @@ package lk.ijse.apigateway.controller;
 
 import lk.ijse.apigateway.dto.AuthResponse;
 import lk.ijse.apigateway.dto.LoginRequest;
+import lk.ijse.apigateway.dto.RefreshRequest;
 import lk.ijse.apigateway.dto.RegisterRequest;
 import lk.ijse.apigateway.service.IotAuthService;
 import org.springframework.web.bind.annotation.*;
@@ -35,4 +36,8 @@ public class AuthController {
         );
     }
 
+    @PostMapping("/refresh")
+    public Mono<AuthResponse> refresh(@RequestBody RefreshRequest request) {
+        return authService.refreshToken(request.getRefreshToken());
+    }
 }
