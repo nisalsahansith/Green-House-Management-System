@@ -1,9 +1,14 @@
 package lk.ijse.zonemanagementservice.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/zones")
 public class ZoneManagementController {
+    @PostMapping("/create")
+    public String createZone() {
+        return "Zone created successfully";
+    }
 }
