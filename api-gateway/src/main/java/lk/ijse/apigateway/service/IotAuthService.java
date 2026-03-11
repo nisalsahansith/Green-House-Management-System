@@ -1,9 +1,7 @@
 package lk.ijse.apigateway.service;
 
-import lk.ijse.apigateway.dto.AuthResponse;
-import lk.ijse.apigateway.dto.LoginRequest;
-import lk.ijse.apigateway.dto.RefreshRequest;
-import lk.ijse.apigateway.dto.RegisterRequest;
+import lk.ijse.apigateway.dto.*;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -50,5 +48,14 @@ public class IotAuthService {
                 .bodyValue(req)
                 .retrieve()
                 .bodyToMono(AuthResponse.class);
+    }
+
+    public Mono<UserInfo> validateToken(String token) {
+        return webClient.get()
+                .uri("/auth/validate") // your auth service validation endpoint
+                .header(HttpHeaders.AUTHORIZATION, token)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(UserInfo.class);
     }
 }
