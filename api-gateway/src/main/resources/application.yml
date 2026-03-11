@@ -14,7 +14,9 @@ spring:
                         - id: sensor-telemetry-service
                           uri: lb://sensor-telemetry-service
                           predicates:
-                              - Path=/sensor-telemetry-service/**
+                            - Path=/sensor-telemetry-service/**
+                          filters:
+                            - name: UserIdHeaderFilter
 
                         - id: automation-control-service
                           uri: http://localhost:3000
@@ -25,7 +27,11 @@ spring:
                           uri: http://localhost:3000
                           predicates:
                               - Path=/crop-inventory-service/**
-
+    security:
+        oauth2:
+          resourceserver:
+            jwt:
+              jwk-set-uri: https://external-issuer.example.com/.well-known/jwks.json
 
 
 server:
