@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-gateway" />
         <module name="sensor-telemetry-service" />
         <module name="crop-inventory-service" />
+        <module name="config-server" />
+        <module name="automation-control-service" />
+        <module name="api-gateway" />
         <module name="zone-management-service" />
         <module name="service-registry" />
-        <module name="automation-control-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
       <module name="automation-control-service" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="crop-inventory-service" options="-parameters" />
       <module name="sensor-telemetry-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
