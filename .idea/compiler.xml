@@ -9,12 +9,14 @@
         <module name="sensor-telemetry-service" />
         <module name="crop-inventory-service" />
         <module name="config-server" />
-        <module name="automation-control-service" />
         <module name="api-gateway" />
         <module name="zone-management-service" />
         <module name="service-registry" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="automation-control-service" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
